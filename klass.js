@@ -81,6 +81,18 @@
       return this
     }
 
+    fn.mixin = function() {
+        for (var which = 0; which < arguments.length; which++) {
+            var mixin = arguments[which]
+            if (mixin === undefined) {
+                console.warn('you have an undefined mixin coming from ' + ns)
+            } else {
+                mixin.call(this, this)
+          }
+        }
+        return this
+    }
+
     return fn
   }
 
